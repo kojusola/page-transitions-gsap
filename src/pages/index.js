@@ -20,14 +20,14 @@ export default function Home() {
   useEffect(() => {
     gsap.to(container, 0, { css: { visibility: "visible" } });
     // console.log(imageReveal);
-    gsap.to(imageReveal, 1.4, {
+    gsap.to(imageReveal, 1.8, {
       css: { width: "0%" },
       ease: Power2.easeInOut,
     });
-    gsap.from(image.current, 1.4, {
-      scale: 1.6,
+    gsap.from(image, 1.4, {
+      scale: 1.8,
       ease: Power2.easeInOut,
-      delay: -1.4,
+      delay: -1.8,
     });
   });
   return (
@@ -48,7 +48,7 @@ export default function Home() {
           ref={(el) => (container = el)}
         >
           <Box className="img-container">
-            <Image ref={image} src={RandomImage} alt="people" />
+            <img ref={(el) => (image = el)} src={RandomImage} alt="people" />
             <Box
               ref={(el) => (imageReveal = el)}
               position="absolute"
@@ -60,6 +60,9 @@ export default function Home() {
             ></Box>
           </Box>
         </Box>
+        <Text fontSize="20px" fontWeight="700" letterSpacing="10px">
+          GSAP IMAGE REVEAL
+        </Text>
       </section>
     </div>
   );
